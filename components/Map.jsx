@@ -37,6 +37,7 @@ const Map = ({ data, options }) => {
     const filterData = () => {
       filteredData.features = [];
       data?.forEach((item) => {
+        if (item.Location) {
         const [latitude, longitude] = item.Location?.replace("(", "")
           .replace("(", "")
           .replace(")", "")
@@ -72,7 +73,7 @@ const Map = ({ data, options }) => {
               },
             });
           }
-        }
+        }}
       });
       mapRef.current.getSource("crimesource").setData(filteredData);
     };
